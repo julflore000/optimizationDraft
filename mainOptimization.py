@@ -32,9 +32,6 @@ model.Y = Set(initialize= np.arange(0,timeFrame))
 #historical generation of each coal plant on an hourly basis
 model.histGen = Param(model.C,model.Y,initialize = getHistoricalGeneration(),doc = "Historical Generation of coal plants")
 
-#coal plant capacity
-model.coalCap = Param(model.C,intialize = getCoalCapacity(),doc = "Coal capacity of each plant code")
-
 #capacity factor parameter for RE sites
 model.capFactor = Param(model.R,model.Y, initialize = getRECapacityFactors(),doc = "Hourly CF of each RE location")
 
@@ -45,7 +42,7 @@ model.ReCapex = Param(model.R,model.Y, initialize = getReCapex(),doc = "RE plant
 model.ReOpex = Param(model.R,model.Y, initialize = getReOpex(),doc = "RE plants OPEX values $/MWh")
 
 #OPEX for Coal- don't need hourly set as coal OPEX values don't have any decline factors
-model.CoalOpex = Param(model.C,initialize = getCoalOpex(), doc = "Cola plants OPEX values $/MWh")
+model.CoalOpex = Param(model.C,initialize = getCoalOpex(), doc = "Coal plants OPEX values $/MWh")
 
 #max capacity for REs at that site
 model.maxCap = Param(model.R, initialize = getMaxReCap(), doc ='Maximum capacity aviable at the site for wind & solar')
